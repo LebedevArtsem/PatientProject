@@ -10,7 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\PatientProject.Application\PatientProject.Application.csproj" />
+    <ProjectReference Include="..\PatientProject.Infrastructure\PatientProject.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
