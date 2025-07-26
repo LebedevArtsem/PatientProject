@@ -11,4 +11,8 @@ public interface IPatientRepository
     Task Delete(Patient patient, CancellationToken token = default);
 
     Task Update(Patient patient, CancellationToken token = default);
+
+    Task<IEnumerable<Patient>> GetAll(CancellationToken token = default);
+
+    Task<IEnumerable<Patient>> SearchByBirthDate(string prefix, DateTime date, CancellationToken token = default);
 }

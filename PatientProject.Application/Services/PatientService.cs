@@ -50,6 +50,17 @@ public class PatientService : IPatientService
         return _mapper.Map<PatientDto>(person);
     }
 
+    public async Task<IEnumerable<PatientDto>> Search(string birthDateParam, CancellationToken token = default)
+    {
+        if (string.IsNullOrWhiteSpace(birthDateParam))
+            return _mapper.Map<IEnumerable<PatientDto>>(await _repository.GetAll(token));
+
+        var (prefix, date) = DateParserHelper.ParseDateParam(birthDateParam);
+
+        var patients = await _repository.SearchByBirthDate(prefix, date, token);
+        return _mapper.Map<IEnumerable<PatientDto>>(patients);
+    }
+
     public async Task Update(PatientDto dto, CancellationToken token = default)
     {
         var patient = await _repository.Get(dto.Name.Id, token);

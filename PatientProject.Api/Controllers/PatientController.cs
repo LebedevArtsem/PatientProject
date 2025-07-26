@@ -53,4 +53,12 @@ public class PatientController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Search([FromQuery] string birthDate, CancellationToken token)
+    {
+        var result = await _patientService.Search(birthDate, token);
+
+        return Ok(result);
+    }
 }

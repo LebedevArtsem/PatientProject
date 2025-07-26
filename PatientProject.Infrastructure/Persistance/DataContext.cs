@@ -7,7 +7,7 @@ namespace PatientProject.Infrastructure.Persistance;
 
 public class DataContext : DbContext
 {
-    public DbSet<Patient> Patitents { get; set; }
+    public DbSet<Patient> Patients { get; set; }
 
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {

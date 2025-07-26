@@ -10,4 +10,6 @@ public interface IPatientService
     Task Delete(Guid id, CancellationToken token = default);
 
     Task Update(PatientDto dto, CancellationToken token = default);
+
+    Task<IEnumerable<PatientDto>> Search(string birthDateParam, CancellationToken token = default);
 }
