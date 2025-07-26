@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   postgres:
     image: postgres:latest
@@ -25,6 +27,15 @@ services:
       - ASPNETCORE_URLS=http://+:80
     ports:
       - "13188:80"
+
+  seeder:
+    image: patient_project_seeder
+    build:
+      context: .
+      dockerfile: PatientProject.Seeder/Dockerfile
+    container_name: patient_project_seeder
+    depends_on:
+      - patientproject.api
   
 volumes:
   postgres_data:
