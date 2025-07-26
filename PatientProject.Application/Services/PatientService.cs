@@ -19,18 +19,11 @@ public class PatientService : IPatientService
 
     public async Task<PatientDto> Create(PatientDto dto, CancellationToken token = default)
     {
-        try
-        {
-            var patient = _mapper.Map<Patient>(dto);
+        var patient = _mapper.Map<Patient>(dto);
 
-            await _repository.Create(patient);
+        await _repository.Create(patient);
 
-            return _mapper.Map<PatientDto>(patient);
-        }
-        catch (Exception)
-        {
-            throw;
-        }
+        return _mapper.Map<PatientDto>(patient);
     }
 
     public async Task Delete(Guid id, CancellationToken token = default)
